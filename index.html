@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>임시 페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    @font-face {
+      font-family: 'Freesentation-6SemiBold';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #181c22;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Freesentation-6SemiBold', 'Pretendard', 'Noto Sans KR', sans-serif;
+    }
+    .btns-wrap {
+      display: flex;
+      gap: 56px;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .btn-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .icon-btn {
+      width: 74px;
+      height: 74px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 18px;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5rem;
+      outline: none;
+      transition: transform 0.15s, box-shadow 0.18s;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+      color: #fff;
+      text-decoration: none;
+      background: #888;
+      position: relative;
+      z-index: 1;
+    }
+    .icon-btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .icon-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.13);
+    }
+    .btn-sum {
+      background-color: #7e6fff;
+    }
+    .btn-nth {
+      background-color: #38bdf8;
+    }
+    .btn-cast {
+      background-color: #43b581;
+    }
+    .btn-rev {
+      background-color: #f9a826;
+      color: #fff;
+    }
+    .icon-btn i {
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+    .btn-label {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      opacity: 1;
+      pointer-events: auto;
+      background: rgba(34,34,34,0.95);
+      color: #fff;
+      padding: 7px 18px;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      user-select: none;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      transition: none;
+      z-index: 10;
+      font-family: 'Freesentation-6SemiBold', 'Pretendard', 'Noto Sans KR', sans-serif;
+    }
+    @media (max-width: 600px) {
+      .btns-wrap {
+        gap: 22px;
+      }
+      .icon-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+      }
+      .icon-btn i {
+        font-size: 1.2rem;
+      }
+      .btn-label {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        margin-bottom: 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="btns-wrap">
+    <div class="btn-col">
+      <a href="https://sailingsnails.streamlit.app/" class="icon-btn btn-sum" target="_blank">
+        <i class="fa-solid fa-chart-simple"></i>
+      </a>
+      <div class="btn-label">정산</div>
+    </div>
+    <div class="btn-col">
+      <a href="https://x.com/playnmusical_Q/status/1900853298317742414" class="icon-btn btn-nth" target="_blank">
+        <i class="fa-solid fa-rotate"></i>
+      </a>
+      <div class="btn-label">회전극</div>
+    </div>
+    <div class="btn-col">
+      <a href="https://blog.naver.com/PostList.naver?blogId=playnmu&from=postList&categoryNo=1&parentCategoryNo=1" class="icon-btn btn-cast" target="_blank">
+        <i class="fa-solid fa-tv"></i>
+      </a>
+      <div class="btn-label">캐슷보드</div>
+    </div>
+    <div class="btn-col">
+      <a href="https://drive.google.com/drive/u/3/my-drive" class="icon-btn btn-rev" target="_blank">
+        <i class="fa-solid fa-pen"></i>
+      </a>
+      <div class="btn-label">후기</div>
+    </div>
+  </div>
+</body>
+</html>

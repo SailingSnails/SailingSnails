@@ -21,8 +21,15 @@
       align-items: center;
       font-family: 'Freesentation-6SemiBold', 'Pretendard', 'Noto Sans KR', sans-serif;
     }
-    .btns-wrap {
+    .btns-outer {
       display: flex;
+      flex-direction: column;
+      gap: 96px;
+      align-items: center;
+    }
+    .btns-row {
+      display: flex;
+      flex-direction: row;
       gap: 56px;
       justify-content: center;
       align-items: flex-end;
@@ -60,19 +67,11 @@
       transform: translateY(-4px) scale(1.04);
       box-shadow: 0 10px 24px rgba(0,0,0,0.13);
     }
-    .btn-sum {
-      background-color: #7e6fff;
-    }
-    .btn-nth {
-      background-color: #38bdf8;
-    }
-    .btn-cast {
-      background-color: #43b581;
-    }
-    .btn-rev {
-      background-color: #f9a826;
-      color: #fff;
-    }
+      .btn-sum    { background-color: #ff8c42; }
+      .btn-nth    { background-color: #f9c846; }
+      .btn-search { background-color: #ff5e5b; }
+      .btn-cast   { background-color: #ffb4a2; }
+      .btn-rev    { background-color: #e07a5f; }
     .icon-btn i {
       color: #fff;
       font-size: 2.2rem;
@@ -96,12 +95,11 @@
       user-select: none;
       margin-bottom: 16px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.09);
-      transition: none;
       z-index: 10;
       font-family: 'Freesentation-6SemiBold', 'Pretendard', 'Noto Sans KR', sans-serif;
     }
     @media (max-width: 600px) {
-      .btns-wrap {
+      .btns-row {
         gap: 22px;
       }
       .icon-btn {
@@ -117,34 +115,47 @@
         padding: 5px 10px;
         margin-bottom: 7px;
       }
+      .btns-outer {
+        gap: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="btns-wrap">
-    <div class="btn-col">
-      <a href="https://sailingsnails.streamlit.app/" class="icon-btn btn-sum" target="_blank">
-        <i class="fa-solid fa-chart-simple"></i>
-      </a>
-      <div class="btn-label">정산</div>
+  <div class="btns-outer">
+    <div class="btns-row">
+      <div class="btn-col">
+        <div class="btn-label">정산</div>
+        <a href="https://sailingsnails.streamlit.app/" class="icon-btn btn-sum" target="_blank">
+          <i class="fa-solid fa-chart-simple"></i>
+        </a>
+      </div>
+      <div class="btn-col">
+        <div class="btn-label">회전극</div>
+        <a href="https://x.com/playnmusical_Q/status/1900853298317742414" class="icon-btn btn-nth" target="_blank">
+          <i class="fa-solid fa-rotate"></i>
+        </a>
+      </div>
+      <div class="btn-col">
+        <div class="btn-label">검색</div>
+        <a href="https://sailingsnails.streamlit.app/Search" class="icon-btn btn-search" target="_blank">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </div>
     </div>
-    <div class="btn-col">
-      <a href="https://x.com/playnmusical_Q/status/1900853298317742414" class="icon-btn btn-nth" target="_blank">
-        <i class="fa-solid fa-rotate"></i>
-      </a>
-      <div class="btn-label">회전극</div>
-    </div>
-    <div class="btn-col">
-      <a href="https://blog.naver.com/PostList.naver?blogId=playnmu&from=postList&categoryNo=1&parentCategoryNo=1" class="icon-btn btn-cast" target="_blank">
-        <i class="fa-solid fa-tv"></i>
-      </a>
-      <div class="btn-label">캐슷보드</div>
-    </div>
-    <div class="btn-col">
-      <a href="https://drive.google.com/drive/u/3/my-drive" class="icon-btn btn-rev" target="_blank">
-        <i class="fa-solid fa-pen"></i>
-      </a>
-      <div class="btn-label">후기</div>
+    <div class="btns-row">
+      <div class="btn-col">
+        <div class="btn-label">캐슷보드</div>
+        <a href="https://blog.naver.com/PostList.naver?blogId=playnmu&from=postList&categoryNo=1&parentCategoryNo=1" class="icon-btn btn-cast" target="_blank">
+          <i class="fa-solid fa-tv"></i>
+        </a>
+      </div>
+      <div class="btn-col">
+        <div class="btn-label">후기</div>
+        <a href="https://drive.google.com/drive/u/3/my-drive" class="icon-btn btn-rev" target="_blank">
+          <i class="fa-solid fa-pen"></i>
+        </a>
+      </div>
     </div>
   </div>
 </body>

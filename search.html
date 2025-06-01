@@ -109,7 +109,7 @@
     }
 
     window.onload = function() {
-      fetch('https://github.com/SailingSnails/summary/raw/refs/heads/main/RawData.xlsx')
+      fetch('RawData.xlsx')
         .then(res => res.arrayBuffer())
         .then(dataArr => {
           const wb = XLSX.read(dataArr, {type: 'array'});

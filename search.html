@@ -8,34 +8,80 @@
   <style>
     @font-face {
       font-family: 'Freesentation';
+      src: url('./Freesentation-3Light.ttf') format('truetype');
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: 'Freesentation';
       src: url('./Freesentation-6SemiBold.ttf') format('truetype');
+      font-weight: 600;
     }
     body {
       font-family: 'Freesentation', 'Malgun Gothic', Arial, sans-serif;
-      background: #181818;
-      color: #eee;
-      font-size: 0.95em;
+      font-weight: 300;
+      color: #222;
+      font-size: 1em;
+      background: #F1F4F8;
     }
-    .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 32px; }
-    .controls input, .controls select { background: #222; color: #eee; border: 1px solid #444; border-radius: 4px; padding: 4px 8px; font-size: 0.95em;}
-    .count-box { margin: 24px 0 18px 0; font-size: 1.5em; font-weight: bold; }
-    table { border-collapse: collapse; width: 100%; background: #222; font-size: 0.9em;}
-    th, td { border: 1px solid #444; padding: 8px 6px; text-align: center; }
-    th { background: #333; }
-    .col-캐슷 { text-align: left !important; }
-    .fa-link { color: #2196f3; font-size: 1.1em; }
-    .icon-link { display: inline-block; padding: 0px 2px; }
+    .controls { 
+      display: flex; 
+      gap: 12px; 
+      align-items: center;
+      margin-top: 24px;
+      margin-bottom: 40px; }
+    .controls input, .controls select {
+      background: #fff;
+      color: #222;
+      border: 2px solid #222;
+      border-radius: 5px;
+      padding: 8px 8px;
+      font-size: 1.1em;
+    }
+    .controls input {
+      width: 320px;
+      margin-left: 12px;
+    }
+    .count-box {
+      margin: 24px 0 18px 0;
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+      font-size: 0.9em;
+    }
+    td {
+      border: 1px solid #e0e0e0;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    th {
+      background: #2c3e50;
+      padding: 8px 6px;
+      color: #fff;
+    }
+    .col-캐슷 {
+      text-align: left !important;
+    }
+    .fa-link {
+      color: #2196f3;
+      font-size: 1em;
+    }
+    .icon-link {
+      display: inline-block;
+      padding: 0px 2px;
+    }
     .highlight {
       background: #ffe066;
       color: #222;
-      border-radius: 3px;
-      padding: 0 2px;
-      font-weight: bold;
+      font-weight: 600;
     }
     .selected-row {
       background: #fef3c7 !important;
       color: #333 !important;
-      transition: background 0.1s;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -171,7 +217,7 @@
       const 본_횟수 = filtered.length;
       const 극Idx = colNames.indexOf('극');
       const 극_개수 = new Set(filtered.map(r => r[극Idx])).size;
-      document.getElementById('count-box').innerHTML = `▶ ${극_개수} 극 &nbsp; & &nbsp; ${본_횟수} 회`;
+      document.getElementById('count-box').innerHTML = `&nbsp;&nbsp;▶ ${극_개수} 극 &nbsp; & &nbsp; ${본_횟수} 회`;
     }
 
     function filterData() {

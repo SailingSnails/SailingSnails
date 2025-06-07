@@ -6,83 +6,19 @@
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    @font-face {
-      font-family: 'Freesentation';
-      src: url('./Freesentation-3Light.ttf') format('truetype');
-      font-weight: 300;
-    }
-    @font-face {
-      font-family: 'Freesentation';
-      src: url('./Freesentation-6SemiBold.ttf') format('truetype');
-      font-weight: 600;
-    }
-    body {
-      font-family: 'Freesentation', 'Malgun Gothic', Arial, sans-serif;
-      font-weight: 300;
-      color: #222;
-      font-size: 1em;
-      background: #F1F4F8;
-    }
-    .controls { 
-      display: flex; 
-      gap: 12px; 
-      align-items: center;
-      margin-top: 24px;
-      margin-bottom: 40px; }
-    .controls input, .controls select {
-      background: #fff;
-      color: #222;
-      border: 2px solid #222;
-      border-radius: 5px;
-      padding: 8px 8px;
-      font-size: 1.1em;
-    }
-    .controls input {
-      width: 320px;
-      margin-left: 12px;
-    }
-    .count-box {
-      margin: 24px 0 18px 0;
-      font-size: 1.5em;
-      font-weight: 600;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background: #fff;
-      font-size: 0.9em;
-    }
-    td {
-      border: 1px solid #e0e0e0;
-      padding: 8px 6px;
-      text-align: center;
-    }
-    th {
-      background: #2c3e50;
-      padding: 8px 6px;
-      color: #fff;
-    }
-    .col-캐슷 {
-      text-align: left !important;
-    }
-    .fa-link {
-      color: #2196f3;
-      font-size: 1em;
-    }
-    .icon-link {
-      display: inline-block;
-      padding: 0px 2px;
-    }
-    .highlight {
-      background: #ffe066;
-      color: #222;
-      font-weight: 600;
-    }
-    .selected-row {
-      background: #fef3c7 !important;
-      color: #333 !important;
-      font-weight: 600;
-    }
+    body { font-family: 'Malgun Gothic', Arial, sans-serif; color: #222; font-size: 1em; background: #F1F4F8; }
+    .controls { display: flex; gap: 12px; align-items: center; margin-top: 24px; margin-bottom: 40px; }
+    .controls input, .controls select { background: #fff; color: #222; border: 2px solid #222; border-radius: 5px; padding: 8px 8px; font-size: 1.1em; }
+    .controls input { width: 320px; margin-left: 12px; }
+    .count-box { margin: 24px 0 18px 0; font-size: 1.5em; font-weight: 600; }
+    table { border-collapse: collapse; width: 100%; background: #fff; font-size: 0.9em; }
+    td { border: 1px solid #e0e0e0; padding: 8px 6px; text-align: center; }
+    th { background: #2c3e50; padding: 8px 6px; color: #fff; }
+    .col-캐슷 { text-align: left !important; }
+    .fa-link { color: #2196f3; font-size: 1em; }
+    .icon-link { display: inline-block; padding: 0px 2px; }
+    .highlight { background: #ffe066; color: #222; font-weight: 600; }
+    .selected-row { background: #fef3c7 !important; color: #333 !important; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -123,6 +59,36 @@
     <tbody></tbody>
   </table>
   <script>
+    const showTitleMap = {
+      '스위니': { ko: '스위니 토드', en: 'Sweeney Todd' },
+      '매다리': { ko: '매디슨 카운티의 다리', en: 'The Bridges of Madison County' },
+      '킹키': { ko: '킹키부츠', en: 'Kinky Boots' },
+      '짘슈': { ko: '지저스 크라이스트 수퍼스타', en: 'Jesus Christ Superstar' },
+      '넥': { ko: '넥스트 투 노멀', en: 'Next to Normal' },
+      '하타': { ko: '하데스타운', en: 'Hadestown' },
+      '물랑': { ko: '물랑루즈!', en: 'Moulin Rouge!' },
+      '오유': { ko: '오페라의 유령', en: 'The Phantom of the Opera'},
+      '레미': { ko: '레미제라블', en: 'Les Misérables' },
+      '라이온킹': { ko: '라이온 킹', en: 'The Lion King' },
+      '럽네다': { ko: '러브 네버 다이즈', en: 'Love Never Dies' },
+      '백퓨': { ko: '백 투 더 퓨처', en: 'Back to the Future' },
+      '시카고': { ko: '시카고', en: 'Chicago' },
+      '킴벌리': { ko: '킴벌리 아킴보', en: 'Kimberly Akimbo' },
+      '알라딘': { ko: '알라딘', en: 'Aladdin' },
+      '구텐': { ko: '구텐버그', en: 'Gutenberg!' },
+      '위키드': { ko: '위키드', en: 'Wicked' },
+      '저받아': { ko: '해리포터와 저주받은 아이', en: 'Harry Potter and the Cursed Child' },
+      '프로즌': { ko: '겨울왕국', en: 'Frozen' },
+      '몰몬': { ko: '더 북 오브 몰몬', en: 'The Book of Mormon' },
+      '스팸': { ko: '스팸어랏', en: 'Monty Python\'s Spamalot' },
+      '스폰지밥': { ko: '네모바지 스폰지밥', en: 'The SpongeBob Musical' },
+      '식스': { ko: '식스 더 뮤지컬', en: 'Six' },
+      '워터포': { ko: '워터 포 엘리펀트', en: 'Water for Elephants' },
+      '아웃사이더': { ko: '아웃사이더', en: 'The Outsiders' },
+      '노트북': { ko: '노트북', en: 'The Notebook' },
+      '개츠비': { ko: '위대한 개츠비', en: 'The Great Gatsby' }
+    };
+
     const colNames = ['날짜','시간','제작사','시즌','장르','극','자n','캐슷','극장','캐보','후기','L1','L2'];
     const buttonCols = ['캐보','후기','L1','L2'];
     let data = [];
@@ -154,6 +120,18 @@
       return text.replace(re, match => `<span class="highlight">${match}</span>`);
     }
 
+    function getDisplayTitle(showName, seatInfo) {
+      for (const [key, pair] of Object.entries(showTitleMap)) {
+        if (showName === key || showName === pair.ko || showName === pair.en) {
+          if (seatInfo && seatInfo.includes('(')) {
+            return pair.en;
+          }
+          return pair.ko;
+        }
+      }
+      return showName;
+    }
+
     window.onload = function() {
       fetch('RawData.xlsx')
         .then(res => res.arrayBuffer())
@@ -172,7 +150,7 @@
           filterData();
         })
         .catch(err => {
-          alert('RawData.xlsx 파일을 불러올 수 없습니다.');
+          alert('파일을 불러올 수 없습니다.');
           console.error(err);
         });
     };
@@ -200,6 +178,10 @@
           } else if (col === '캐슷') {
             let disp = cell ? formatCastDisplay(String(cell)) : '';
             td.innerHTML = highlightText(disp, search);
+          } else if (col === '극') {
+            const seatInfo = row[colNames.indexOf('자n')];
+            const showName = cell;
+            td.innerHTML = highlightText(getDisplayTitle(showName, seatInfo), search);
           } else {
             td.innerHTML = highlightText(String(cell ?? ''), search);
           }
@@ -216,7 +198,17 @@
     function renderCount(filtered) {
       const 본_횟수 = filtered.length;
       const 극Idx = colNames.indexOf('극');
-      const 극_개수 = new Set(filtered.map(r => r[극Idx])).size;
+      const 극_개수 = new Set(filtered.map(r => {
+        for (const pair of Object.values(showTitleMap)) {
+          if (
+            pair.ko === r[극Idx] ||
+            pair.en === r[극Idx]
+          ) {
+            return pair.ko;
+          }
+        }
+        return r[극Idx];
+      })).size;
       document.getElementById('count-box').innerHTML = `&nbsp;&nbsp;▶ ${극_개수} 극 &nbsp; & &nbsp; ${본_횟수} 회`;
     }
 
@@ -226,12 +218,30 @@
       let filtered = data;
       if (search) {
         if (!selected_col) {
+          let searchCandidates = null;
+          for (const pair of Object.values(showTitleMap)) {
+            if (
+              pair.ko.toLowerCase() === search.toLowerCase() ||
+              pair.en.toLowerCase() === search.toLowerCase() ||
+              pair.ko.toLowerCase().includes(search.toLowerCase()) ||
+              pair.en.toLowerCase().includes(search.toLowerCase()) ||
+              search.toLowerCase().includes(pair.ko.toLowerCase()) ||
+              search.toLowerCase().includes(pair.en.toLowerCase())
+            ) {
+              searchCandidates = [pair.ko, pair.en].map(v => v.toLowerCase());
+              break;
+            }
+          }
           const searchIdx = colNames
             .map((name, idx) => buttonCols.includes(name) ? null : idx)
             .filter(idx => idx !== null);
-          filtered = data.filter(row =>
-            searchIdx.some(idx => String(row[idx] || '').toLowerCase().includes(search.toLowerCase()))
-          );
+          filtered = data.filter(row => {
+            const rowShow = row[colNames.indexOf('극')] ? String(row[colNames.indexOf('극')]).trim().toLowerCase() : '';
+            if (searchCandidates && searchCandidates.includes(rowShow)) {
+              return true;
+            }
+            return searchIdx.some(idx => String(row[idx] || '').toLowerCase().includes(search.toLowerCase()));
+          });
         } else if (selected_col === '캐슷') {
           const idx = colNames.indexOf('캐슷');
           filtered = data.filter(row => (' ' + row[idx] + ' ').toLowerCase().includes(' ' + search.toLowerCase() + ' '));
@@ -241,7 +251,28 @@
             const makers = ('┃'+row[idx].replace(/, /g,'┃')+'┃').toLowerCase();
             return makers.includes('┃'+search.toLowerCase()+'┃');
           });
-        } else if (['극','극장'].includes(selected_col)) {
+        } else if (selected_col === '극') {
+          const idx = colNames.indexOf('극');
+          filtered = data.filter(row => {
+            const rowShow = row[idx] ? String(row[idx]).trim() : '';
+            const searchTrim = search.trim();
+            let foundPair = null;
+            for (const pair of Object.values(showTitleMap)) {
+              if (
+                pair.ko.toLowerCase() === searchTrim.toLowerCase() ||
+                pair.en.toLowerCase() === searchTrim.toLowerCase()
+              ) {
+                foundPair = [pair.ko, pair.en];
+                break;
+              }
+            }
+            if (foundPair) {
+              return foundPair.some(title => title === rowShow || title.toLowerCase() === rowShow.toLowerCase());
+            } else {
+              return rowShow.toLowerCase() === searchTrim.toLowerCase();
+            }
+          });
+        } else if (['극장'].includes(selected_col)) {
           const idx = colNames.indexOf(selected_col);
           filtered = data.filter(row => String(row[idx]) === search);
         } else if (buttonCols.includes(selected_col)) {
